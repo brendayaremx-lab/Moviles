@@ -1,0 +1,8 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- el material3 pone los colores en automatico para que combine con la interfaz-->
+    <!-- El bridge permite las funciones modernas pero que yo maneje el color-->
+    <style name="Base.Theme.Calculadora" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+    </style>
+
+    <style name="Theme.Calculadora" parent="Base.Theme.Calculadora" />
+</resources>

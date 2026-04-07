@@ -1,0 +1,6 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.Calculadora" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+    </style>
+
+    <style name="Theme.Calculadora" parent="Base.Theme.Calculadora" />
+</resources>
