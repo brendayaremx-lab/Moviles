@@ -1,0 +1,10 @@
+# Archivos locales
+local.properties
+
+# Carpetas generadas
+build/
+.gradle/
+
+# Archivos de Android Studio
+.idea/
+*.iml
