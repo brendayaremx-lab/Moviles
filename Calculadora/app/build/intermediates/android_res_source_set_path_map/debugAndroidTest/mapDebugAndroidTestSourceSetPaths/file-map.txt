@@ -1,6 +1,0 @@
-com.example.calculadora.test.app-core-1.7.0-0 C:\Users\usuario final\.gradle\caches\9.2.1\transforms\23f4541b41f022556ea6c44c8c018b9e\workspace\transformed\core-1.7.0\res
-com.example.calculadora.test.app-tracing-1.2.0-1 C:\Users\usuario final\.gradle\caches\9.2.1\transforms\6fe9c79e90ec48a27f0c5c0e91f29d59\workspace\transformed\tracing-1.2.0\res
-com.example.calculadora.test.app-updated_navigation_xml-2 C:\Users\usuario final\moviles\Calculadora\app\build\generated\updated_navigation_xml\debugAndroidTest
-com.example.calculadora.test.app-packageDebugAndroidTestResources-3 C:\Users\usuario final\moviles\Calculadora\app\build\intermediates\incremental\debugAndroidTest\packageDebugAndroidTestResources\merged.dir
-com.example.calculadora.test.app-packageDebugAndroidTestResources-4 C:\Users\usuario final\moviles\Calculadora\app\build\intermediates\incremental\debugAndroidTest\packageDebugAndroidTestResources\stripped.dir
-com.example.calculadora.test.app-debugAndroidTest-5 C:\Users\usuario final\moviles\Calculadora\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources
