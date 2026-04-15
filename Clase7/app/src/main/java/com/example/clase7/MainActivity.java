@@ -2,6 +2,7 @@ package com.example.clase7;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -16,53 +17,42 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
     RecyclerView recyclerView;
     MiAdaptador adaptador;
-    EditText editText;
-    Button button;
+    Button miButton;
+    EditText miInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+        MiCliente miCliente = new MiCliente();
+        AsyncTask.execute(() -> {
+            ArrayList<Personaje> misDatos = miCliente.getElements();
+            runOnUiThread(() -> {
+                adaptador = new MiAdaptador(misDatos);
+                recyclerView.setAdapter(adaptador);
+            });
+        });
+        miButton = findViewById(R.id.button);
+        miInput = findViewById(R.id.textInputEditText);
         recyclerView = findViewById(R.id.my_recycler_view);
-        editText = findViewById(R.id.ingresar);
-        button = findViewById(R.id.button);
-
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        MiCliente miCliente = new MiCliente();
-
-        AsyncTask.execute(new Runnable() {
-            @Override
-            public void run() {
-                ArrayList<String> misDatos = miCliente.getElements();
-                runOnUiThread(() -> {
-                    adaptador = new MiAdaptador(misDatos);
-                    recyclerView.setAdapter(adaptador);
-                });
+        /*
+        miButton.setOnClickListener(v -> {
+            // Obtener elemento
+            if (!miInput.getText().toString().isBlank()){
+                String newElemento = miInput.getText().toString();
+                adaptador.addElemento(newElemento);
             }
         });
-
-        // Botón para agregar
-        button.setOnClickListener(v -> {
-            String nuevoNombre = editText.getText().toString().trim();
-            if (!nuevoNombre.isEmpty() && adaptador != null) {
-                adaptador.agregarNombre(nuevoNombre);
-                editText.setText("");
-                recyclerView.scrollToPosition(adaptador.getItemCount() - 1);
-            }
-        });
+        */
     }
 }
-
-

@@ -1,50 +1,48 @@
 package com.example.clase7;
 
-import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
-
+import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-
 public class MiCliente {
 
     private String url = "https://steadfast-essence-funcion.up.railway.app/api/characters";
-
     OkHttpClient client = new OkHttpClient();
 
-    private ArrayList<String> run(String url) throws IOException {
+    public ArrayList<Personaje> getElements() {
         Request request = new Request.Builder()
                 .url(url)
                 .build();
-
         try (Response response = client.newCall(request).execute()) {
-            String respuesta = response.body().string();
+            ArrayList<Personaje> elementos = new ArrayList<>();
 
-            ArrayList<String> elementos = new ArrayList<>();
-            JSONArray array = new JSONArray(respuesta);
+            // CORRECCIÓN: Leemos directamente un JSONArray en lugar de un JSONObject
+            JSONArray array = new JSONArray(response.body().string());
 
-            for (int i = 0; i < array.length(); i++) {
-                String elemento = array.getString(i);
-                elementos.add(elemento);
+            for (int i = 0; i < array.length(); i++){ // Simplificado el límite del for
+                JSONObject elemento = array.getJSONObject(i);
+                String name = elemento.getString("name");
+                String desc = elemento.getString("desc");
+                String photo = elemento.getString("photo");
+                int atack = elemento.getInt("atack");
+                int def = elemento.getInt("def");
+
+                Personaje personaje = new Personaje(
+                        name,
+                        desc,
+                        photo,
+                        atack,
+                        def
+                );
+                elementos.add(personaje);
             }
             return elementos;
-
-        } catch (JSONException e) {
+        } catch (IOException | JSONException e) {
             throw new RuntimeException(e);
-        }
-    }
-
-    public ArrayList<String> getElements() {
-        try {
-            return run(url);
-        } catch (IOException e) {
-            Log.e("bren", "Error: " + e.getMessage());
-            return new ArrayList<>();
         }
     }
 }
