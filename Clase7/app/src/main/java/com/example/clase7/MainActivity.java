@@ -15,8 +15,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-
+//main es la pantalla principal
+//addCompatActitity es clase base de andoird para actividades con soporte de versiones anteriores
 public class MainActivity extends AppCompatActivity {
+
+    //lista que renderiza solo los elementos visibles en pantalla
     RecyclerView recyclerView;
     MiAdaptador adaptador;
     Button miButton;

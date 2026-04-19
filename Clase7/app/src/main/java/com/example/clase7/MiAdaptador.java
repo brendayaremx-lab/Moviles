@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
+//miAdaptador es la clase que conecta los datos y el recycleView
 public class MiAdaptador extends RecyclerView.Adapter<MiViewHolder> {
 
     private ArrayList<Personaje> localDataSet;
